@@ -1,6 +1,6 @@
 package com.crewrung.crew.vo;
 
-public class GetAllCrewVO {
+public class AllCrewVO {
 	private int crewNumber;
 	private String crewName;
 	private String introduction;
@@ -9,7 +9,7 @@ public class GetAllCrewVO {
 	private String guName;
 	private int crewMembersCount;
 	
-	public GetAllCrewVO(int crewNumber, String crewName, String introduction, String interestCategory, String image,
+	public AllCrewVO(int crewNumber, String crewName, String introduction, String interestCategory, String image,
 			String guName, int crewMembersCount) {
 		super();
 		this.crewNumber = crewNumber;
