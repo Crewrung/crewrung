@@ -2,30 +2,26 @@ package com.crewrung.flashMob.vo;
 
 import java.sql.Date;
 
-public class FlashMobVO {
+public class FlashMobMainViewVO {
 	private int flashMobNumber;
-	private int flashMobHostId;
     private String title;
     private String content;
     private String interestCategory;
-    private String ageRange;
+    private String guName;
+    private int participantCount;
     private int maxMember;
     private Date meetingDate;
-    private String image;
-    private int guNumber;
 
-	public FlashMobVO(int flashMobNumber, int flashMobHostId, String title, String content, String interestCategory,
-			String ageRange, int maxMember, Date meetingDate, String image, int guNumber) {
+	public FlashMobMainViewVO(int flashMobNumber, String title, String content, String interestCategory, String guName,
+			int participantCount, int maxMember, Date meetingDate) {
 		this.flashMobNumber = flashMobNumber;
-		this.flashMobHostId = flashMobHostId;
 		this.title = title;
 		this.content = content;
 		this.interestCategory = interestCategory;
-		this.ageRange = ageRange;
+		this.guName = guName;
+		this.participantCount = participantCount;
 		this.maxMember = maxMember;
 		this.meetingDate = meetingDate;
-		this.image = image;
-		this.guNumber = guNumber;
 	}
 
 	public int getFlashMobNumber() {
@@ -34,14 +30,6 @@ public class FlashMobVO {
 
 	public void setFlashMobNumber(int flashMobNumber) {
 		this.flashMobNumber = flashMobNumber;
-	}
-
-	public int getFlashMobHostId() {
-		return flashMobHostId;
-	}
-
-	public void setFlashMobHostId(int flashMobHostId) {
-		this.flashMobHostId = flashMobHostId;
 	}
 
 	public String getTitle() {
@@ -68,12 +56,20 @@ public class FlashMobVO {
 		this.interestCategory = interestCategory;
 	}
 
-	public String getAgeRange() {
-		return ageRange;
+	public String getGuName() {
+		return guName;
 	}
 
-	public void setAgeRange(String ageRange) {
-		this.ageRange = ageRange;
+	public void setGuName(String guName) {
+		this.guName = guName;
+	}
+
+	public int getParticipantCount() {
+		return participantCount;
+	}
+
+	public void setParticipantCount(int participantCount) {
+		this.participantCount = participantCount;
 	}
 
 	public int getMaxMember() {
@@ -92,28 +88,11 @@ public class FlashMobVO {
 		this.meetingDate = meetingDate;
 	}
 
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public int getGuNumber() {
-		return guNumber;
-	}
-
-	public void setGuNumber(int guNumber) {
-		this.guNumber = guNumber;
-	}
-
 	@Override
 	public String toString() {
-		return "FlashMobVO [flashMobNumber=" + flashMobNumber + ", flashMobHostId=" + flashMobHostId + ", title="
-				+ title + ", content=" + content + ", interestCategory=" + interestCategory + ", ageRange=" + ageRange
-				+ ", maxMember=" + maxMember + ", meetingDate=" + meetingDate + ", image=" + image + ", guNumber="
-				+ guNumber + "]";
+		return "FlashMobMainViewVO [flashMobNumber=" + flashMobNumber + ", title=" + title + ", content=" + content
+				+ ", interestCategory=" + interestCategory + ", guName=" + guName + ", participantCount="
+				+ participantCount + ", maxMember=" + maxMember + ", meetingDate=" + meetingDate + "]";
 	}
-
+    
 }
