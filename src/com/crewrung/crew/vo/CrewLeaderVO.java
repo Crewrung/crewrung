@@ -1,10 +1,10 @@
 package com.crewrung.crew.vo;
 
-public class GetCrewLeaderVO {
+public class CrewLeaderVO {
 	private String name;
 	private String nickname;
 	
-	public GetCrewLeaderVO(String name, String nickname) {
+	public CrewLeaderVO(String name, String nickname) {
 		super();
 		this.name = name;
 		this.nickname = nickname;
