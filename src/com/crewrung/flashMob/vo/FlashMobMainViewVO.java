@@ -11,7 +11,10 @@ public class FlashMobMainViewVO {
     private int participantCount;
     private int maxMember;
     private Date meetingDate;
-
+    
+    public FlashMobMainViewVO(){
+    }
+    
 	public FlashMobMainViewVO(int flashMobNumber, String title, String content, String interestCategory, String guName,
 			int participantCount, int maxMember, Date meetingDate) {
 		this.flashMobNumber = flashMobNumber;

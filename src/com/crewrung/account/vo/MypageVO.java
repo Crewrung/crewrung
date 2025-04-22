@@ -71,7 +71,7 @@ public class MypageVO {
 	public void setCrewNames(List<String> crewNames) {
 		this.crewNames = crewNames;
 	}
-
+	
 	public List<String> getFlashMobTitles() {
 		return flashMobTitles;
 	}
@@ -86,11 +86,4 @@ public class MypageVO {
 				+ ", phoneNumber=" + phoneNumber + ", introduction=" + introduction + ", crewNames=" + crewNames
 				+ ", flashMobTitles=" + flashMobTitles + "]";
 	}
-	
-	
-	
-	
-	
-	
-
 }
