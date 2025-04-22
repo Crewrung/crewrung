@@ -8,11 +8,19 @@ public class UserInfoVO {
     private String phoneNumber;
     private String nickname;
     private String gender;
-    private String location;     // city_name + gu_name
+    private int guNumber;
     private LocalDate birthDate;
     
     
-	public UserInfoVO(String userId, String email, String phoneNumber, String nickname, String gender, String location,
+    public UserInfoVO(){}
+    
+	public UserInfoVO(String userId) {
+		super();
+		this.userId = userId;
+	}
+
+
+	public UserInfoVO(String userId, String email, String phoneNumber, String nickname, String gender, int guNumber,
 			LocalDate birthDate) {
 		super();
 		this.userId = userId;
@@ -20,7 +28,7 @@ public class UserInfoVO {
 		this.phoneNumber = phoneNumber;
 		this.nickname = nickname;
 		this.gender = gender;
-		this.location = location;
+		this.guNumber = guNumber;
 		this.birthDate = birthDate;
 	}
 
@@ -75,13 +83,13 @@ public class UserInfoVO {
 	}
 
 
-	public String getLocation() {
-		return location;
+	public int getGuNumber() {
+		return guNumber;
 	}
 
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setGuNumber(int guNumber) {
+		this.guNumber = guNumber;
 	}
 
 
@@ -98,7 +106,7 @@ public class UserInfoVO {
 	@Override
 	public String toString() {
 		return "UserInfoVO [userId=" + userId + ", email=" + email + ", phoneNumber=" + phoneNumber + ", nickname="
-				+ nickname + ", gender=" + gender + ", location=" + location + ", birthDate=" + birthDate + "]";
+				+ nickname + ", gender=" + gender + ", guNumber=" + guNumber + ", birthDate=" + birthDate + "]";
 	}
 	
 	
