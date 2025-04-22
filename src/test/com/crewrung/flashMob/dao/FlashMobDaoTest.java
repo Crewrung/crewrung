@@ -90,7 +90,7 @@ public class FlashMobDaoTest {
 	public void failAddFlashMob() {
 		FlashMobVO flashMobVO = new FlashMobVO();
 		flashMobVO.setFlashMobHostId("any user id");
-		flashMobVO.setTitle("주말 러닝 번개");
+		flashMobVO.setTitle("");
 		flashMobVO.setContent("");
 		flashMobVO.setInterestCategory("운동");
 		flashMobVO.setAgeRange("20대");
@@ -114,5 +114,6 @@ public class FlashMobDaoTest {
 		assertTrue(dao.getFlashMobDetail(11111111) == null);
 		assertTrue(dao.getFlashMobDetail(0) == null);
 	}
+	
 
 }
