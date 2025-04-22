@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="flashMobMapper">
+
+  <select id="getAllFlashMobs" resultType="com.crewrung.flashMob.vo.FlashMobMainViewVO">
+    SELECT 
+      f.flashMob_number, f.title, f.content, f.interest_category,
+      g.gu_name, f_count.participant_count, f.max_member, f.meeting_date
+    FROM flashMobs f
+    JOIN gues g ON f.gu_number = g.gu_number
+    JOIN (
+      SELECT f.flashMob_number, COUNT(f.flashMob_number) + 1 AS participant_count
+      FROM flashMobs f
+      LEFT JOIN flashMob_participants fp ON f.flashMob_number = fp.flashMob_number
+      GROUP BY f.flashMob_number
+    ) f_count ON f.flashMob_number = f_count.flashMob_number
+    ORDER BY f.meeting_date DESC
+  </select>
+  
+  
+  
+  
+  
+</mapper>
