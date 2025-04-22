@@ -84,7 +84,34 @@
 		FROM flashMobs
 		WHERE flashMob_number = #{flashMobNumber}
 	</select>
-
-
-
+	
+	<insert id="addFlashMobParticipant" parameterType="com.crewrung.flashMob.vo.FlashMobParticipantVO">
+		INSERT INTO flashMob_participants (user_id, flashMob_number, apply_date)
+		VALUES (#{userId} ,#{flashMobNumber}, #{applyDate})
+	</insert>
+	
+	<update id="setFlashMobDetail" parameterType="com.crewrung.flashMob.vo.FlashMobVO">
+		UPDATE flashMobs SET title = #{title},
+		content = #{content},
+		interest_category = #{interestCategory},
+		age_range = #{ageRange},
+		max_member = #{maxMember},
+		meeting_date = #{meetingDate},
+		image = #{image},
+		gu_number = #{guNumber}
+		WHERE flashMob_number = #{flashMobNumber}
+	</update>
+	
+	<select id="getAllFlashMobComments" parameterType="int"
+		resultType="com.crewrung.flashMob.vo.FlashMobCommentVO">
+		SELECT user_id, flashMob_comment, comment_date 
+		FROM flashMob_comments 
+		WHERE flashMob_number=#{flashMobNumber}
+	</select>
+	
+	<insert id="addFlashMobComment" parameterType="com.crewrung.flashMob.vo.FlashMobCommentVO">
+		INSERT INTO FLASHmOB_COMMENTS (flashMob_comment_id, flashMob_comment, comment_date, user_id, flashMob_number)
+		VALUES (CREW_COMMENTS_SEQ.nextval, #{flashMobComment}, #{commentDate}, #{userId}, #{flashMobNumber})
+	</insert>
+	
 </mapper>
