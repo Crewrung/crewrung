@@ -6,7 +6,11 @@ public class FlashMobParticipantVO {
 	private String userId;
     private int flashMobNumber;
     private Date applyDate;
-
+    
+    public FlashMobParticipantVO() {
+    	
+    }
+    
 	public FlashMobParticipantVO(String userId, int flashMobNumber, Date applyDate) {
 		this.userId = userId;
 		this.flashMobNumber = flashMobNumber;
