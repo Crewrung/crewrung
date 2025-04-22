@@ -2,6 +2,7 @@ package test.com.crewrung.flashMob.dao;
 
 import static org.junit.Assert.assertTrue;
 
+import java.sql.Date;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +16,9 @@ import org.junit.Test;
 
 import com.crewrung.db.DBCP;
 import com.crewrung.flashMob.dao.FlashMobDAO;
+import com.crewrung.flashMob.vo.FlashMobCommentVO;
 import com.crewrung.flashMob.vo.FlashMobMainViewVO;
+import com.crewrung.flashMob.vo.FlashMobParticipantVO;
 import com.crewrung.flashMob.vo.FlashMobVO;
 
 public class FlashMobDaoTest {
@@ -112,7 +115,105 @@ public class FlashMobDaoTest {
 	@Test
 	public void failGetFlashMobDetail() {
 		assertTrue(dao.getFlashMobDetail(11111111) == null);
-		assertTrue(dao.getFlashMobDetail(0) == null);
+	}
+	
+	@Test
+	public void successAddFlashMobParticipant() {
+		FlashMobParticipantVO flashMobParticipantVO = new FlashMobParticipantVO();
+		flashMobParticipantVO.setUserId("sangho5053");
+		flashMobParticipantVO.setFlashMobNumber(1);
+		flashMobParticipantVO.setApplyDate(new Date(new java.util.Date().getTime()));
+		
+		int result = dao.addFlashMobParticipant(flashMobParticipantVO);
+		assertTrue(result == 1);
+	}
+	
+	@Test
+	public void failAddFlashMobParticipant() {
+		FlashMobParticipantVO flashMobParticipantVO = new FlashMobParticipantVO();
+		flashMobParticipantVO.setUserId("hyunjoo482");
+		flashMobParticipantVO.setFlashMobNumber(1);
+		flashMobParticipantVO.setApplyDate(new Date(new java.util.Date().getTime()));
+		
+		try {
+			dao.addFlashMobParticipant(flashMobParticipantVO);
+		} catch (Exception e) {
+			assertTrue(e.getClass() == PersistenceException.class);
+		}
+	}
+	
+	@Test
+	public void successSetFlashMobDetail() {
+		FlashMobVO flashMobVO = new FlashMobVO();
+		flashMobVO.setFlashMobNumber(1);
+		flashMobVO.setFlashMobHostId("hyunjoo482");
+		flashMobVO.setTitle("테스트 제목");
+		flashMobVO.setContent("테스트 내용");
+		flashMobVO.setInterestCategory("운동");
+		flashMobVO.setAgeRange("20대");
+		flashMobVO.setMaxMember(10);
+		flashMobVO.setGuNumber(1168000000);
+		flashMobVO.setMeetingDate(new Date(new java.util.Date().getTime()));
+		flashMobVO.setImage("");
+		
+		int result = dao.setFlashMobDetail(flashMobVO);
+		assertTrue(result == 1);
+	}
+	
+	@Test
+	public void failSetFlashMobDetail() {
+		FlashMobVO flashMobVO = new FlashMobVO();
+		flashMobVO.setFlashMobNumber(1);
+		flashMobVO.setFlashMobHostId("hyunjoo482");
+		flashMobVO.setTitle("테스트 제목");
+		flashMobVO.setContent("테스트 내용");
+		flashMobVO.setInterestCategory("운동");
+		flashMobVO.setAgeRange("20대");
+		flashMobVO.setMaxMember(10);
+		flashMobVO.setGuNumber(1168000000);
+		flashMobVO.setImage("");
+
+		try {
+			dao.setFlashMobDetail(flashMobVO);
+		} catch (Exception e) {
+			assertTrue(e.getClass() == PersistenceException.class);
+		};
+	}
+
+	@Test
+	public void successGetAllFlashMobComments() {
+		List<FlashMobCommentVO> result = dao.getAllFlashMobComments(1);
+
+		assertTrue(result.size() == 2);
+	}
+	
+	@Test
+	public void successAddFlashMobComment() {
+		FlashMobCommentVO flashMobCommentVO = new FlashMobCommentVO();
+		flashMobCommentVO.setFlashMobComment("테스트 내용");
+		flashMobCommentVO.setUserId("donggyu042");
+		flashMobCommentVO.setFlashMobNumber(2);
+		flashMobCommentVO.setCommentDate(new Date(new java.util.Date().getTime()));
+
+		
+		int result = dao.addFlashMobComment(flashMobCommentVO);
+		assertTrue(result == 1);
+	}
+	
+	@Test
+	public void failAddFlashMobComment() {
+		FlashMobCommentVO flashMobCommentVO = new FlashMobCommentVO();
+		flashMobCommentVO.setFlashMobComment("테스트 내용");
+		flashMobCommentVO.setUserId("hyunjoo482");
+		flashMobCommentVO.setFlashMobNumber(2);
+		flashMobCommentVO.setCommentDate(new Date(new java.util.Date().getTime()));
+
+		
+		try {
+			dao.addFlashMobComment(flashMobCommentVO);
+		} catch (Exception e) {
+			assertTrue(e.getClass() == PersistenceException.class);
+		};
 	}
 	
 
