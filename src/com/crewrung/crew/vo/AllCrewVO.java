@@ -1,4 +1,4 @@
-package com.crewrung.crew.vo;
+ package com.crewrung.crew.vo;
 
 public class AllCrewVO {
 	private int crewNumber;

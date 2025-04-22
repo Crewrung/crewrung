@@ -1,12 +1,12 @@
 package com.crewrung.crew.vo;
 
-public class GetCrewMeetingHostVO {
+public class CrewMeetingParticipantVO {
 	private String profileImage;
 	private String name;
 	private String nickname;
 	
-	public GetCrewMeetingHostVO(){}
-	public GetCrewMeetingHostVO(String profileImage, String name, String nickname) {
+	public CrewMeetingParticipantVO(){}
+	public CrewMeetingParticipantVO(String profileImage, String name, String nickname) {
 		this.profileImage = profileImage;
 		this.name = name;
 		this.nickname = nickname;
