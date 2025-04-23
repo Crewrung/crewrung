@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<settings>
     	<setting name="mapUnderscoreToCamelCase" value="true"/>
+    	
   	</settings>
   <!-- JDBC 드라이버 정보 및 데이터베이스 연결정보 -->
   <environments default="development">
@@ -21,8 +22,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   
   <mappers>
     <mapper resource="mapper/flashMob/flashMobMapper.xml"/>
+	<mapper resource="mapper/board/boardMapper.xml"/>
     <mapper resource="mapper/crew/crewMapper.xml"/>
-    
+    <mapper resource="mapper/account/accountMapper.xml"/>
   </mappers>
   
 </configuration>

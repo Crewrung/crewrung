@@ -9,6 +9,10 @@ public class FlashMobCommentVO {
     private String userId;
     private int flashMobNumber;
     
+    public FlashMobCommentVO() {
+    	
+    }
+    
 	public FlashMobCommentVO(int flashMobCommentId, String flashMobComment, Date commentDate, String userId,
 			int flashMobNumber) {
 		this.flashMobCommentId = flashMobCommentId;

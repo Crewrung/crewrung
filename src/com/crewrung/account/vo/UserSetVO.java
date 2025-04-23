@@ -1,6 +1,6 @@
 package com.crewrung.account.vo;
 
-public class UserUpdateVO {
+public class UserSetVO {
 	
     private String password; 
     private String email; 
@@ -9,7 +9,7 @@ public class UserUpdateVO {
     private String location;
     
     
-	public UserUpdateVO(){}
+	public UserSetVO(){}
 
 
 	public String getPassword() {

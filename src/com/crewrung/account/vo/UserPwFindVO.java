@@ -1,14 +1,18 @@
 package com.crewrung.account.vo;
 
 public class UserPwFindVO {
-	
+	private String userPw;
+	private String userId;
 	private String email;
 	
 	public UserPwFindVO(){}
+	
+	public String getUserId() {
+		return userId;
+	}
 
-	public UserPwFindVO(String email) {
-		super();
-		this.email = email;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getEmail() {
@@ -21,8 +25,11 @@ public class UserPwFindVO {
 
 	@Override
 	public String toString() {
-		return "UserPwFindVO [email=" + email + "]";
+		return "UserPwFindVO [userId=" + userId + ", email=" + email + "]";
 	}
+	
+	
+
 	
 	
 	
