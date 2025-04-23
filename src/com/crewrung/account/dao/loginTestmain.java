@@ -119,5 +119,7 @@ public class loginTestmain {
 		}else{
 			System.out.println("변경 실패");
 		}
+		
+		
 	}
 }

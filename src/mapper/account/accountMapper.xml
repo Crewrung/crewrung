@@ -109,7 +109,8 @@
 		SET
 		email = COALESCE(#{email}, email),
 		phone_number = COALESCE(#{phoneNumber}, phone_number),
-		nickname = COALESCE(#{nickname}, nickname)
+		nickname = COALESCE(#{nickname}, nickname),
+		gu_number = COALESCE(#{guNumber}, gu_number)
 		WHERE user_id = #{userId}
 	</update>
 
