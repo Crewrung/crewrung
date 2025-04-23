@@ -14,14 +14,15 @@ public class JoinVO {
 	private int guNumber;
 	private String question;
 	private String answer;
-	private LocalDate birthDate;
-	private String introduction;
-	private String profileImage;
-	private LocalDate joinDate;
+	private String birthDate;
+	private String introduction = "자기소개";
+	private String profileImage = "default.jpg";
+	
+	
 	
 	public JoinVO(String userId, String userPw, String name, String email, String phoneNumber, String nickname,
-			String gender, int guNumber, String question, String answer, LocalDate birthDate, String introduction,
-			String profileImage, LocalDate joinDate) {
+			String gender, int guNumber, String question, String answer, String birthDate, String introduction,
+			String profileImage) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
@@ -36,7 +37,6 @@ public class JoinVO {
 		this.birthDate = birthDate;
 		this.introduction = introduction;
 		this.profileImage = profileImage;
-		this.joinDate = joinDate;
 	}
 	public String getUserId() {
 		return userId;
@@ -98,10 +98,10 @@ public class JoinVO {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	public LocalDate getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 	public String getIntroduction() {
@@ -116,18 +116,12 @@ public class JoinVO {
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
 	}
-	public LocalDate getJoinDate() {
-		return joinDate;
-	}
-	public void setJoinDate(LocalDate joinDate) {
-		this.joinDate = joinDate;
-	}
 	@Override
 	public String toString() {
 		return "JoinVO [userId=" + userId + ", userPw=" + userPw + ", name=" + name + ", email=" + email
 				+ ", phoneNumber=" + phoneNumber + ", nickname=" + nickname + ", gender=" + gender + ", guNumber="
 				+ guNumber + ", question=" + question + ", answer=" + answer + ", birthDate=" + birthDate
-				+ ", introduction=" + introduction + ", profileImage=" + profileImage + ", joinDate=" + joinDate + "]";
+				+ ", introduction=" + introduction + ", profileImage=" + profileImage + "]";
 	}
 	
 	

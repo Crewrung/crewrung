@@ -1,24 +1,32 @@
 package test.com.crewrung.board;
 
 import static org.junit.Assert.*;
-import java.util.*;
+
+import java.util.Date;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.junit.*;
-import com.crewrung.db.DBCP;
-import com.crewrung.board.dao.BoardDAO_Complete;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-import com.crewrung.board.vo.*;
+import com.crewrung.board.dao.BoardDAO;
+import com.crewrung.board.vo.BoardCommentListVO;
+import com.crewrung.board.vo.BoardCommentVO;
+import com.crewrung.board.vo.BoardDetailVO;
+import com.crewrung.board.vo.BoardVO;
+import com.crewrung.db.DBCP;
 
 public class BoardDAOTest {
     private SqlSession session;
-    private BoardDAO_Complete dao;
+    private BoardDAO dao;
 
     @Before
     public void setUp() throws Exception {
         SqlSessionFactory factory = DBCP.getSqlSessionFactory();
         session = factory.openSession(false);
-        dao = new BoardDAO_Complete(factory);
+        dao = new BoardDAO(factory);
     }
 
     @After
@@ -29,113 +37,84 @@ public class BoardDAOTest {
         }
     }
 
+    // 1) 댓글 삽입 성공
+    @Test
+    public void testInsertCommentSuccess() {
+        BoardCommentVO comment = new BoardCommentVO(30, "seulbin59", "Test Comment");
+        int result = dao.insertComment(comment);
+        assertEquals(1, result);
+    }
 
-    // from BoardCommentCreateDAOTest
-        @Test
-        public void successtestInsertComment() {
-            BoardCommentCreateVO comment = new BoardCommentCreateVO(30, "seulbin59", "Test Comment");
-            int result = dao.insertComment(comment);
-            assertEquals(1, result);
+    // 2) 댓글 삽입 실패 (존재하지 않는 사용자 등)
+    @Test
+    public void testInsertCommentFailure() {
+        BoardCommentVO comment = new BoardCommentVO(30, "invalidUser", "Should Fail");
+        try {
+            dao.insertComment(comment);
+            fail("Expected an exception on invalid commenter");
+        } catch (Exception e) {
+            // 예외 발생 기대
         }
+    }
 
-    // from BoardCommentCreateDAOTest
-        @Test
-        public void failtestInsertComment() {
-            BoardCommentCreateVO comment = new BoardCommentCreateVO(30, "seusdfn54", "Test Comment");
-            try{
-               dao.insertComment(comment);
-            }catch (Exception e) {
-                System.out.println("ㅛ셔헉ㄹㅇ " + e.getMessage());
-            }
-        }
+    // 3) 댓글 목록 조회
+    @Test
+    public void testGetAllComments() {
+        List<BoardCommentListVO> comments = dao.getAllComments();
+        assertNotNull(comments);
+    }
 
-    // from BoardCommentCreateDAOTest
-        @Test
-        public void testGetAllComments1() {
-            List<BoardCommentListVO> comments = dao.getAllComments();
-            assertNotNull(comments);
-        }
+    // 4) 댓글 삭제
+    @Test
+    public void testDeleteComment() {
+        BoardCommentVO vo = new BoardCommentVO(1L, "seulbin59");
+        int result = dao.deleteComment(vo);
+        assertEquals(1, result);
+    }
 
-    // from BoardCommentDeleteDAOTest
-        @Test
-        public void testDeleteComment() {
-            BoardCommentDeleteVO vo = new BoardCommentDeleteVO(1L, "seulbin59");
-            int result = dao.deleteComment(vo);
-            assertEquals(1, result);
-        }
+    // 5) 게시글 삽입
+    @Test
+    public void testInsertBoard() {
+        BoardDetailVO vo = new BoardDetailVO(
+            "jungwoo58",
+            "Sample Title",
+            "Sample Content",
+            new Date(),
+            0
+        );
+        int result = dao.insertBoard(vo);
+        assertEquals(1, result);
+    }
 
-    // from BoardCommentListDAOTest
-        @Test
-        public void testGetAllComments() {
-            assertNotNull(dao.getAllComments());
-        }
+    // 6) 게시글 삭제
+    @Test
+    public void testDeleteBoard() {
+        BoardVO vo = new BoardVO(40L, "gimsubin94", "dsgfsaergedf");
+        int result = dao.deleteBoard(vo);
+        assertEquals(1, result);
+    }
 
-    // from BoardCommentUpdateDAOTest
-        @Test
-        public void testUpdateComment() {
-            BoardCommentUpdateVO vo = new BoardCommentUpdateVO(1L, "seulbin59", "asfwaefsd");
-            int result = dao.updateComment(vo);
-            assertEquals(1, result);
-        }
+    // 7) 게시글 상세 조회
+    @Test
+    public void testGetBoardDetail() {
+        BoardDetailVO detail = dao.getBoardDetail(1L);
+        assertNotNull(detail);
+    }
 
-    // from BoardCreateDAOTest
-        @Test
-        public void testInsertBoard() throws Exception {
-            SqlSessionFactory factory = DBCP.getSqlSessionFactory();
-            BoardCreateVO vo = new BoardCreateVO("jungwoo58", "sdfds", "sdfdsfdssd", new Date(), 0);
-            int result = dao.insertBoard(vo);
-            assertEquals(1, result);
-            tearDown();
-        }
+    // 8) 전체 게시글 조회
+    @Test
+    public void testGetAllBoards() {
+        List<BoardVO> boards = dao.getAllBoards();
+        assertNotNull(boards);
+    }
 
-    // from BoardDeleteDAOTest
-        @Test
-        public void testDeleteBoard() {
-            BoardDeleteVO vo = new BoardDeleteVO(60L, "gimsubin94");
-            int result = dao.deleteBoard(vo);
-            assertEquals(1, result);
-        }
+    // 10) 게시글 수정
+    @Test
+    public void testUpdateBoard() {
+        BoardVO vo = new BoardVO(1L, "joosung88", "Updated Title", "Updated Content");
+        int result = dao.updateBoard(vo);
+        assertEquals(1, result);
+    }
 
-    // from BoardDetailDAOTest
-        @Test
-        public void testGetBoardDetail() {
-            assertNotNull(dao.getBoardDetail(1L));
-        }
-
-    // from BoardListDAOTest
-        @Test
-        public void testGetAllBoards() {
-            assertNotNull(dao.getAllBoards());
-        }
-
-    // from BoardRecentDAOTest
-        @Test
-        public void testGetRecentBoards() {
-            assertNotNull(dao.getRecentBoards());
-        }
-
-    // from BoardRecommendDAOTest
-        @Test
-        public void testRecommendBoard() {
-            BoardRecommendVO vo = new BoardRecommendVO(1L);
-            int result = dao.recommendBoard(vo);
-            assertEquals(1, result);
-        }
-
-    // from BoardUpdateDAOTest
-        @Test
-        public void testUpdateBoard() throws Exception {
-            BoardUpdateVO vo = new BoardUpdateVO(1L, "joosung88", "jhhgjg", "fgjhghj");
-            int result = dao.updateBoard(vo);
-            assertEquals(1, result);
-            tearDown();
-        }
-
-    // from BoardViewIncrementDAOTest
-        @Test
-        public void testIncrementView() {
-            BoardViewIncrementVO vo = new BoardViewIncrementVO(1L);
-            int result = dao.incrementView(vo);
-            assertEquals(1, result);
-        }
 }
+

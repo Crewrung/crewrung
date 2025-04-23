@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class FlashMobVO {
 	private int flashMobNumber;
-	private int flashMobHostId;
+	private String flashMobHostId;
     private String title;
     private String content;
     private String interestCategory;
@@ -13,8 +13,12 @@ public class FlashMobVO {
     private Date meetingDate;
     private String image;
     private int guNumber;
-
-	public FlashMobVO(int flashMobNumber, int flashMobHostId, String title, String content, String interestCategory,
+    
+    public FlashMobVO() {
+    	
+    }
+    
+	public FlashMobVO(int flashMobNumber, String flashMobHostId, String title, String content, String interestCategory,
 			String ageRange, int maxMember, Date meetingDate, String image, int guNumber) {
 		this.flashMobNumber = flashMobNumber;
 		this.flashMobHostId = flashMobHostId;
@@ -36,11 +40,11 @@ public class FlashMobVO {
 		this.flashMobNumber = flashMobNumber;
 	}
 
-	public int getFlashMobHostId() {
+	public String getFlashMobHostId() {
 		return flashMobHostId;
 	}
 
-	public void setFlashMobHostId(int flashMobHostId) {
+	public void setFlashMobHostId(String flashMobHostId) {
 		this.flashMobHostId = flashMobHostId;
 	}
 
