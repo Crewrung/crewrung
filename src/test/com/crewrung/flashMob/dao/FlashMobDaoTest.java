@@ -230,6 +230,6 @@ public class FlashMobDaoTest {
 			assertTrue(e.getClass() == PersistenceException.class);
 		};
 	}
-
-
 }
+
+
