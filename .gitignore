@@ -29,7 +29,6 @@ replay_pid*
 .settings/
 .classpath
 .project
-/WebContent/META-INF/
 
 # 환경별 임시파일
 *.swp
