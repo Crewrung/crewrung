@@ -8,6 +8,8 @@ public class CrewManagePageVO {
 	private String city;
 	private String introduction;
 	
+	
+	public CrewManagePageVO(){}
 	//크루 관리페이지 조회(크루가입신청자)을 위한 생성자
 	public CrewManagePageVO(String profileImage, String nickname, int age, String gender, String city,
 			String introduction) {
