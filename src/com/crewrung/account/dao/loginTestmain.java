@@ -113,6 +113,7 @@ public class loginTestmain {
 		UserInfoVO userInfo = new UserInfoVO();
 		userInfo.setUserId("gyeonghyii18");
 		userInfo.setEmail("update@naver.com");
+		userInfo.setGuNumber(1154500000);
 		int setuserInfoResult = dao.setUserInfo(userInfo);
 		if(setuserInfoResult > 0){
 			System.out.println("변경 완료");
