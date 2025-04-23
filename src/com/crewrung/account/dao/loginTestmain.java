@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.crewrung.account.service.JoinService;
 import com.crewrung.account.vo.JoinVO;
 import com.crewrung.account.vo.LoginVO;
 import com.crewrung.account.vo.MypageVO;
@@ -20,6 +21,8 @@ public class loginTestmain {
 		SqlSession session = sqlfactory.openSession();
 
 		AccountDAO dao = new AccountDAO(session);
+		JoinService service = new JoinService(dao);
+		
 		// 로그인
 //		LoginVO loginVO = new LoginVO("donghyeok981", "FUtDrL6Cv8mZdZ5");
 //
@@ -59,13 +62,6 @@ public class loginTestmain {
 //		회원가입
 //		JoinVO joinVO = new JoinVO("user12","1234","김소유","kik@gmail.com","010-1234-1234","소유야","여성",
 //				1144000000,"당신의 초등학교 이름은?","초초초","2025-04-12",null,null);
-//		
-//		int joinResult = dao.join(joinVO);
-//		if(joinResult>0){
-//			System.out.println("회원가입성공");
-//		}else{
-//			System.out.println("회원가입실패");
-//		}
 		
 		// 아이디 삭제 외래키 제약조건 확인 필요 
 //		UserInfoVO userinfoVO = new UserInfoVO("donghyeok981");
@@ -110,15 +106,15 @@ public class loginTestmain {
 //			System.out.println("일치하는 아이디나 이메일이 없습니다.");
 //		}
 		// 구넘버 확인필요
-		UserInfoVO userInfo = new UserInfoVO();
-		userInfo.setUserId("gyeonghyii18");
-		userInfo.setEmail("update@naver.com");
-		userInfo.setGuNumber(1154500000);
-		int setuserInfoResult = dao.setUserInfo(userInfo);
-		if(setuserInfoResult > 0){
-			System.out.println("변경 완료");
-		}else{
-			System.out.println("변경 실패");
-		}
+//		UserInfoVO userInfo = new UserInfoVO();
+//		userInfo.setUserId("gyeonghyii18");
+//		userInfo.setEmail("update@naver.com");
+//		userInfo.setGuNumber(1154500000);
+//		int setuserInfoResult = dao.setUserInfo(userInfo);
+//		if(setuserInfoResult > 0){
+//			System.out.println("변경 완료");
+//		}else{
+//			System.out.println("변경 실패");
+//		}
 	}
 }

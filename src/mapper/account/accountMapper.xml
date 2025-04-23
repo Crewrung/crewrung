@@ -55,6 +55,27 @@
 		WHERE user_id = #{userId} AND email
 		= #{email}
 	</select>
+	
+	
+    <select id="isUserIdExist" resultType="int">
+        SELECT COUNT(*)
+        FROM users
+        WHERE user_id = #{userId}
+    </select>
+
+    
+    <select id="isEmailExist" resultType="int">
+        SELECT COUNT(*)
+        FROM users
+        WHERE email = #{email}
+    </select>
+
+    
+    <select id="isNickNameExist" resultType="int">
+        SELECT COUNT(*)
+        FROM users
+        WHERE nickname = #{nickname}
+    </select>
 
 	<insert id="Join" parameterType="com.crewrung.account.vo.JoinVO">
 		INSERT INTO users (
