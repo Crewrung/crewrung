@@ -14,6 +14,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.crewrung.account.vo.UserInfoVO;
 import com.crewrung.db.DBCP;
 import com.crewrung.flashMob.dao.FlashMobDAO;
 import com.crewrung.flashMob.vo.FlashMobCommentVO;
@@ -45,6 +46,7 @@ public class FlashMobDaoTest {
 		assertTrue(result.size() == 30);
 	}
 
+	
 	@Test
 	public void successGetAllFlashMobsByFilter() {
 		Map<String, String> filter = new HashMap<>();
@@ -214,6 +216,33 @@ public class FlashMobDaoTest {
 		} catch (Exception e) {
 			assertTrue(e.getClass() == PersistenceException.class);
 		};
+	}
+	
+	@Test
+	public void successGetFlashMobHost() {
+		UserInfoVO host = dao.getFlashMobHost(1);
+		assertTrue(host != null);
+		assertTrue(host.getUserId().equals("hyunjoo482")); // 예상 주최자 ID로 확인
+	}
+
+	@Test
+	public void failGetFlashMobHost() {
+		UserInfoVO host = dao.getFlashMobHost(999999); // 존재하지 않는 flashMobNumber
+		assertTrue(host == null);
+	}
+	
+	@Test
+	public void successGetFlashMobParticipants() {
+		List<UserInfoVO> participants = dao.getFlashMobParticipants(1);
+		assertTrue(participants != null);
+		assertTrue(participants.size() > 0);
+	}
+
+	@Test
+	public void failFlashMobParticipants() {
+		List<UserInfoVO> participants = dao.getFlashMobParticipants(999999);
+		assertTrue(participants != null);
+		assertTrue(participants.size() == 0);
 	}
 	
 
