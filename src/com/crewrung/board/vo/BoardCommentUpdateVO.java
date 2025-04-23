@@ -1,0 +1,34 @@
+package com.crewrung.board.vo;
+
+public class BoardCommentUpdateVO {
+    private Long commentNumber;
+    private String currentUser;
+    private String newComment;
+
+    public BoardCommentUpdateVO() {}
+
+    public BoardCommentUpdateVO(Long commentNumber, String currentUser, String newComment) {
+		super();
+		this.commentNumber = commentNumber;
+		this.currentUser = currentUser;
+		this.newComment = newComment;
+	}
+
+	public Long getCommentNumber() { return commentNumber; }
+    public void setCommentNumber(Long commentNumber) { this.commentNumber = commentNumber; }
+
+    public String getCurrentUser() { return currentUser; }
+    public void setCurrentUser(String currentUser) { this.currentUser = currentUser; }
+
+    public String getNewComment() { return newComment; }
+    public void setNewComment(String newComment) { this.newComment = newComment; }
+
+    @Override
+    public String toString() {
+        return "BoardCommentUpdateVO{" +
+               "commentNumber=" + commentNumber + ", " +
+               "currentUser='" + currentUser + "', " +
+               "newComment='" + newComment + "'" +
+               "}";
+    }
+}

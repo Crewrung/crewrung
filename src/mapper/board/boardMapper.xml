@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+  <!-- From BoardCommentCreateMapper.xml -->
+    <!-- resultMap 명시적 매핑 -->
+    <resultMap id="BoardCommentResultMap" type="com.crewrung.board.vo.BoardCommentCreateVO">
+      <result property="boardNumber" column="board_number" />
+      <result property="currentUser" column="board_commenter_id" />
+      <result property="commentText" column="board_comment" />
+    </resultMap>
+
+    <!-- 전체 댓글 조회 -->
+    <select id="getAllBoardCommentCreate" resultMap="BoardCommentResultMap">
+      SELECT board_comment_number, board_number, board_commenter_id, board_comment, comment_date
+      FROM BOARD_COMMENTS
+    </select>
+
+    <!-- 댓글 생성 -->
+    <insert id="insertBoardComment" parameterType="com.crewrung.board.vo.BoardCommentCreateVO">
+      INSERT INTO BOARD_COMMENTS (
+        board_comment_number,
+        board_number,
+        board_commenter_id,
+        board_comment,
+        comment_date
+      ) VALUES (
+        board_comments_seq.nextval,
+        #{boardNumber},
+        #{currentUser},
+        #{commentText},
+        SYSDATE
+      )
+    </insert>
+  
+
+
+  <!-- From BoardMapperCommentDelete.xml -->
+    <delete id="deleteComment" parameterType="com.crewrung.board.vo.BoardCommentDeleteVO">
+      DELETE FROM BOARD_COMMENTS
+      WHERE board_comment_number = #{commentNumber}
+        AND board_commenter_id = #{currentUser}
+    </delete>
+
+  <!-- From BoardMapperCommentList.xml -->
+    <select id="getAllComments" resultType="com.crewrung.board.vo.BoardCommentListVO">
+      SELECT board_comment_number AS boardCommentNumber,
+             board_comment,
+             comment_date AS commentDate,
+             board_commenter_id AS commenter
+      FROM BOARD_COMMENTS
+    </select>
+
+  <!-- From BoardMapperCommentUpdate.xml -->
+ 
+    <update id="updateComment" parameterType="com.crewrung.board.vo.BoardCommentUpdateVO">
+      UPDATE BOARD_COMMENTS
+      SET board_comment = #{newComment}
+      WHERE board_comment_number = #{commentNumber}
+        AND board_commenter_id = #{currentUser}
+    </update>
+
+  <!-- From BoardMapperCreate.xml -->
+  
+  <insert id="insertBoard" parameterType="com.crewrung.board.vo.BoardCreateVO">
+    INSERT INTO boards (
+      board_number, writer_id, title, content, writing_date, view_count
+    ) VALUES (
+      boards_seq.nextval, #{writerId}, #{title}, #{content}, #{writingDate}, #{viewCount}
+    )
+  </insert>
+
+
+  <!-- From BoardMapperDelete.xml -->
+  <delete id="deleteBoard" parameterType="com.crewrung.board.vo.BoardDeleteVO">
+    DELETE FROM BOARDS
+     WHERE board_number = #{boardNumber}
+       AND writer_id   = #{currentUser}
+  </delete>
+
+
+  <!-- From BoardMapperDetail.xml -->
+  <select id="getBoardDetail" parameterType="long" resultType="com.crewrung.board.vo.BoardDetailVO">
+    SELECT 
+        B.board_number,
+        B.title,
+        B.content,
+        B.writing_date,
+        B.view_count,
+        U.nickname AS writer
+      FROM BOARDS B
+      JOIN USERS U
+        ON B.writer_id = U.user_id
+     WHERE B.board_number = #{boardNumber}
+  </select>
+
+
+  <!-- From BoardMapperList.xml -->
+  <select id="getAllBoards" resultType="com.crewrung.board.vo.BoardListVO">
+    SELECT board_number, writer_id, title, content, writing_date, view_count
+      FROM boards
+  </select>
+
+
+  <!-- From BoardMapperRecent.xml -->
+    <select id="getRecentBoards" resultType="com.crewrung.board.vo.BoardRecentVO">
+      SELECT *
+      FROM (
+        SELECT * FROM BOARDS
+        ORDER BY board_number DESC
+      )
+      WHERE ROWNUM &lt;= 10 
+    </select>
+
+
+  <!-- From BoardMapperRecommend.xml -->
+  <update id="recommendBoard" parameterType="com.crewrung.board.vo.BoardRecommendVO">
+    UPDATE BOARDS
+       SET view_count = view_count + 1
+     WHERE board_number = #{boardNumber}
+  </update>
+
+
+  <!-- From BoardMapperUpdate.xml -->
+  <update id="updateBoard" parameterType="com.crewrung.board.vo.BoardUpdateVO">
+    UPDATE BOARDS
+       SET title   = #{newTitle},
+           content = #{newContent}
+     WHERE board_number = #{boardNumber}
+       AND writer_id   = #{currentUser}
+  </update>
+
+
+  <!-- From BoardMapperViewIncrement.xml -->
+  <update id="incrementView" parameterType="com.crewrung.board.vo.BoardViewIncrementVO">
+    UPDATE BOARDS
+       SET view_count = view_count + 1
+     WHERE board_number = #{boardNumber}
+  </update>
+
+
+</mapper>

@@ -27,13 +27,13 @@ public class FlashMobDaoTest {
 	 @After
 	 public void tearDown() throws Exception {
 		 if (session != null) {
-	        session.rollback(); // 테스트 끝나면 롤백
+	        session.rollback(); // �뀒�뒪�듃 �걹�굹硫� 濡ㅻ갚
 	        session.close();
 	       }
 	 }
 
 	 @Test
-	 public void successGetAllFlashMobs() {
+	 public void getAllBoardCommentCreate() {
 	   List<FlashMobMainViewVO> result = dao.getAllFlashMobs();
 	   assertTrue(result.size() == 30);
 	 }
