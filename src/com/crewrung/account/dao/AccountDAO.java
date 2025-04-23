@@ -22,7 +22,6 @@ public class AccountDAO {
 
 	// 로그인
 	public boolean login(LoginVO loginVO){
-
 		return con.selectOne("accountMapper.Login",loginVO) != null ? true : false;
 	}
 
@@ -70,6 +69,18 @@ public class AccountDAO {
 		return con.update("accountMapper.setUserInfo", userInfoVO);
 	}
 	
+	// 아이디 중복 체크
+	public int isUserIdExist(JoinVO joinVO){
+		return con.selectOne("accountMapper.isUserIdExist", joinVO);
+	}
+	// 이메일 중복 체크
+	public int isEmailExist(JoinVO joinVO){
+		return con.selectOne("accountMapper.isEmailExist", joinVO);
+	}
+	// 닉네임 중복 체크
+	public int isNickNameExist(JoinVO joinVO){
+		return con.selectOne("accountMapper.isNickNameExist", joinVO);
+	}
 	
 
 

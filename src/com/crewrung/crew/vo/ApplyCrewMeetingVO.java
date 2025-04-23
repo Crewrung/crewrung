@@ -1,27 +1,15 @@
 package com.crewrung.crew.vo;
 
 public class ApplyCrewMeetingVO {
-	private int crewParticipantNumber;
 	private int crewMeetingNumber;
 	private int crewMemberNumber;
-	private String applyDate;
+	
 	
 	public ApplyCrewMeetingVO(){}
 
-	public ApplyCrewMeetingVO(int crewParticipantNumber, int crewMeetingNumber, int crewMemberNumber,
-			String applyDate) {
-		this.crewParticipantNumber = crewParticipantNumber;
+	public ApplyCrewMeetingVO(int crewMeetingNumber, int crewMemberNumber) {
 		this.crewMeetingNumber = crewMeetingNumber;
 		this.crewMemberNumber = crewMemberNumber;
-		this.applyDate = applyDate;
-	}
-
-	public int getCrewParticipantNumber() {
-		return crewParticipantNumber;
-	}
-
-	public void setCrewParticipantNumber(int crewParticipantNumber) {
-		this.crewParticipantNumber = crewParticipantNumber;
 	}
 
 	public int getCrewMeetingNumber() {
@@ -39,22 +27,12 @@ public class ApplyCrewMeetingVO {
 	public void setCrewMemberNumber(int crewMemberNumber) {
 		this.crewMemberNumber = crewMemberNumber;
 	}
-
-	public String getApplyDate() {
-		return applyDate;
-	}
-
-	public void setApplyDate(String applyDate) {
-		this.applyDate = applyDate;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + crewMeetingNumber;
 		result = prime * result + crewMemberNumber;
-		result = prime * result + crewParticipantNumber;
 		return result;
 	}
 
@@ -71,14 +49,14 @@ public class ApplyCrewMeetingVO {
 			return false;
 		if (crewMemberNumber != other.crewMemberNumber)
 			return false;
-		if (crewParticipantNumber != other.crewParticipantNumber)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CrewMeetingParticipantVO [crewParticipantNumber=" + crewParticipantNumber + ", crewMeetingNumber="
-				+ crewMeetingNumber + ", crewMemberNumber=" + crewMemberNumber + ", applyDate=" + applyDate + "]";
-	};
+		return "ApplyCrewMeetingVO [crewMeetingNumber=" + crewMeetingNumber + ", crewMemberNumber=" + crewMemberNumber
+				+ "]";
+	}
+	
+	
 }	

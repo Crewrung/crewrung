@@ -4,6 +4,7 @@ public class CrewCommentVO {
 	private String nickname;
 	private String crewComment;
 	
+	public CrewCommentVO(){}
 	public CrewCommentVO(String nickname, String crewComment) {
 		super();
 		this.nickname = nickname;
