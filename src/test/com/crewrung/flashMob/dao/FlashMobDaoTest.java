@@ -31,8 +31,23 @@ public class FlashMobDaoTest {
 		dao = new FlashMobDAO(session);
 	}
 
+
+	 @After
+	 public void tearDown() throws Exception {
+		 if (session != null) {
+	        session.rollback(); // �뀒�뒪�듃 �걹�굹硫� 濡ㅻ갚
+	        session.close();
+	       }
+	 }
+
+	 @Test
+	 public void getAllBoardCommentCreate() {
+	   List<FlashMobMainViewVO> result = dao.getAllFlashMobs();
+	   assertTrue(result.size() == 30);
+	 }
+	 
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown1() throws Exception {
 		if (session != null) {
 			session.rollback(); // 테스트 끝나면 롤백
 			session.close();
@@ -215,6 +230,6 @@ public class FlashMobDaoTest {
 			assertTrue(e.getClass() == PersistenceException.class);
 		};
 	}
-	
-
 }
+
+
