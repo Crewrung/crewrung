@@ -4,7 +4,7 @@ public class PromotionVO {
 	private String promotionMessage;
 	private String introduction;
 	
-	
+	public PromotionVO(){}
 	public PromotionVO(String promotionMessage, String introduction) {
 		super();
 		this.promotionMessage = promotionMessage;
