@@ -98,19 +98,20 @@
 	<update id="setMypage" parameterType="com.crewrung.account.vo.MypageVO">
 		UPDATE users
 		SET
-		profile_image = COALESCE(#{profileImage}, profile_image),
-		introduction
-		= COALESCE(#{introduction}, introduction)
+		profile_image = COALESCE(#{profileImage, jdbcType=VARCHAR}, profile_image),
+		introduction = COALESCE(#{introduction, jdbcType=VARCHAR}, introduction)
 		WHERE user_id = #{userId}
 	</update>
 
 	<update id="setUserInfo" parameterType="com.crewrung.account.vo.UserInfoVO">
 		UPDATE users
 		SET
-		email = COALESCE(#{email}, email),
-		phone_number = COALESCE(#{phoneNumber}, phone_number),
-		nickname = COALESCE(#{nickname}, nickname)
+		email = COALESCE(#{email, jdbcType=VARCHAR}, email),
+		phone_number = COALESCE(#{phoneNumber, jdbcType=VARCHAR}, phone_number),
+		nickname = COALESCE(#{nickname, jdbcType=VARCHAR}, nickname),
+		gu_number = COALESCE(#{guNumber, jdbcType=INTEGER}, gu_number)  <!-- Integer로 처리 -->
 		WHERE user_id = #{userId}
 	</update>
+
 
 </mapper>
