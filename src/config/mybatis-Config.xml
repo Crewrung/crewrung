@@ -22,8 +22,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   
   <mappers>
     <mapper resource="mapper/flashMob/flashMobMapper.xml"/>
+    <mapper resource="mapper/crew/crewMapper.xml"/>
     <mapper resource="mapper/account/accountMapper.xml"/>
- 
   </mappers>
   
 </configuration>

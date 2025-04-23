@@ -5,25 +5,65 @@ public class CrewMeetingVO {
 	private String title;
 	private String content;
 	private String meetingDate;
+	private int maxMember;
+	private int guNumber;
+	private int crewMeetingNumber;
+	private int crewNumber;
+	private int crewMeetingHostNumber;
 	private String guName;
 	private String hostName;
 	
 	public CrewMeetingVO(){}
 
-	public CrewMeetingVO(String image, String title, String content, String meetingDate, String guName,
-			String hostName) {
+	public CrewMeetingVO(String image, String title, String content, String meetingDate, int maxMember, int guNumber,
+			int crewMeetingNumber, int crewNumber, int crewMeetingHostNumber,String guName, String hostName) {
 		this.image = image;
 		this.title = title;
 		this.content = content;
 		this.meetingDate = meetingDate;
+		this.maxMember = maxMember;
+		this.guNumber = guNumber;
+		this.crewMeetingNumber = crewMeetingNumber;
+		this.crewNumber = crewNumber;
+		this.crewMeetingHostNumber = crewMeetingHostNumber;
 		this.guName = guName;
 		this.hostName = hostName;
 	}
 	
-	public CrewMeetingVO(String image, String title, String content, String meetingDate, String guName) {
-		this(image, title, content, meetingDate, guName,null);
+	public CrewMeetingVO(String title, String content, String meetingDate, int maxMember,
+			int crewNumber, int crewMeetingHostNumber, int guNumber) {
+		this(null,title, content, meetingDate, maxMember, guNumber, 0, crewNumber, crewMeetingHostNumber,null,null);
+	}
+	
+	public CrewMeetingVO(String image, String title, String content, String meetingDate, int maxMember, int guNumber,
+			int crewMeetingNumber) {
+		this(image, title, content, meetingDate, maxMember, guNumber, crewMeetingNumber, 0,0,null,null);
+	}
+	
+	public CrewMeetingVO(String image, String title, String content){
+		this(image, title, content, null, 0, 0, 0, 0,0,null,null);
+	}
+	
+	public CrewMeetingVO(String title, String meetingDate, String guName, String hostName){
+		this(null, title, null, meetingDate, 0, 0, 0, 0,0,guName,hostName);
+	}
+	
+	public String getGuName() {
+		return guName;
 	}
 
+	public void setGuName(String guName) {
+		this.guName = guName;
+	}
+
+	public String getHostName() {
+		return hostName;
+	}
+
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
+	}
+	
 	public String getImage() {
 		return image;
 	}
@@ -56,25 +96,51 @@ public class CrewMeetingVO {
 		this.meetingDate = meetingDate;
 	}
 
-	public String getGuName() {
-		return guName;
+	public int getMaxMember() {
+		return maxMember;
 	}
 
-	public void setGuName(String guName) {
-		this.guName = guName;
+	public void setMaxMember(int maxMember) {
+		this.maxMember = maxMember;
 	}
 
-	public String getHostName() {
-		return hostName;
+	public int getGuNumber() {
+		return guNumber;
 	}
 
-	public void setHostName(String hostName) {
-		this.hostName = hostName;
+	public void setGuNumber(int guNumber) {
+		this.guNumber = guNumber;
+	}
+
+	public int getCrewMeetingNumber() {
+		return crewMeetingNumber;
+	}
+
+	public void setCrewMeetingNumber(int crewMeetingNumber) {
+		this.crewMeetingNumber = crewMeetingNumber;
+	}
+
+	public int getCrewNumber() {
+		return crewNumber;
+	}
+
+	public void setCrewNumber(int crewNumber) {
+		this.crewNumber = crewNumber;
+	}
+
+	public int getCrewMeetingHostNumber() {
+		return crewMeetingHostNumber;
+	}
+
+	public void setCrewMeetingHostNumber(int crewMeetingHostNumber) {
+		this.crewMeetingHostNumber = crewMeetingHostNumber;
 	}
 
 	@Override
 	public String toString() {
 		return "CrewMeetingVO [image=" + image + ", title=" + title + ", content=" + content + ", meetingDate="
-				+ meetingDate + ", guName=" + guName + ", hostName=" + hostName + "]";
+				+ meetingDate + ", maxMember=" + maxMember + ", guNumber=" + guNumber + ", crewMeetingNumber="
+				+ crewMeetingNumber + ", crewNumber=" + crewNumber + ", crewMeetingHostNumber=" + crewMeetingHostNumber
+				+ ", guName=" + guName + ", hostName=" + hostName + "]";
 	}
 }

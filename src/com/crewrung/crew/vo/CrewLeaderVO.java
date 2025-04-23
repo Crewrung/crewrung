@@ -4,6 +4,7 @@ public class CrewLeaderVO {
 	private String name;
 	private String nickname;
 	
+	public CrewLeaderVO(){} //기본생성자 추가함
 	public CrewLeaderVO(String name, String nickname) {
 		super();
 		this.name = name;

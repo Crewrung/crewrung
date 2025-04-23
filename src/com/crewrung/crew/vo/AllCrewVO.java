@@ -9,6 +9,7 @@ public class AllCrewVO {
 	private String guName;
 	private int crewMembersCount;
 	
+	public AllCrewVO(){}
 	public AllCrewVO(int crewNumber, String crewName, String introduction, String interestCategory, String image,
 			String guName, int crewMembersCount) {
 		super();
