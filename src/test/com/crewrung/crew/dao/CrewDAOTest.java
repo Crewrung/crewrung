@@ -50,20 +50,20 @@ public class CrewDAOTest {
 	@After
 	public void tearDown() throws Exception {
 		if (session != null) {
-			session.rollback(); // Å×½ºÆ® ³¡³ª¸é ·Ñ¹é
+			session.rollback(); // í…ŒìŠ¤íŠ¸ ëë‚˜ë©´ ë¡¤ë°±
 			session.close();
 		}
 	}
 
 //	@Test
 //	public void successSetCrewMeeting() {
-//		assertTrue(dao.setCrewMeeting(new CrewMeetingVO("", "»õ Á¦¸ñ", "»õ ³»¿ë", "2025-01-11", 6, 1111000000, 2)));
+//		assertTrue(dao.setCrewMeeting(new CrewMeetingVO("", "ìƒˆ ì œëª©", "ìƒˆ ë‚´ìš©", "2025-01-11", 6, 1111000000, 2)));
 //	}
 //
 //	@Test
 //	public void failSetCrewMeeting() {
 //		try {
-//			dao.setCrewMeeting(new CrewMeetingVO("", "»õ Á¦¸ñ", "»õ ³»¿ë", "2025-12-11", 6, 1000000, 2));
+//			dao.setCrewMeeting(new CrewMeetingVO("", "ìƒˆ ì œëª©", "ìƒˆ ë‚´ìš©", "2025-12-11", 6, 1000000, 2));
 //		} catch (Exception e) {
 //			assertTrue(e.getClass() == PersistenceException.class);
 //		}
@@ -105,13 +105,13 @@ public class CrewDAOTest {
 	
 //	@Test
 //	public void successAddCrewMeeting() {
-//		assertTrue(dao.addCrewMeeting(new CrewMeetingVO("Ãà±¸ °æ±â º¸·¯°¡½ÇºĞ", "Àá½Ç °í°íÇú", "2025-04-30", 4, 1, 11, 1171000000)));
+//		assertTrue(dao.addCrewMeeting(new CrewMeetingVO("ì¶•êµ¬ ê²½ê¸° ë³´ëŸ¬ê°€ì‹¤ë¶„", "ì ì‹¤ ê³ ê³ í˜“", "2025-04-30", 4, 1, 11, 1171000000)));
 //	}
 //	
 //	@Test
 //	public void failAddCrewMeeting() {
 //		try {
-//			dao.addCrewMeeting(new CrewMeetingVO("Ãà±¸ °æ±â º¸·¯°¡½ÇºĞ", "Àá½Ç °í°íÇú", "2025-04-30", 4, 1, 11, 232332));
+//			dao.addCrewMeeting(new CrewMeetingVO("ì¶•êµ¬ ê²½ê¸° ë³´ëŸ¬ê°€ì‹¤ë¶„", "ì ì‹¤ ê³ ê³ í˜“", "2025-04-30", 4, 1, 11, 232332));
 //		} catch (Exception e) {
 //			assertTrue(e.getClass() == PersistenceException.class);
 //		}
@@ -172,121 +172,121 @@ public class CrewDAOTest {
 //		assertFalse(dao.removeCrewMember(new CrewMemberVO(30231, 3213121)));
 //	}
 	
-	@Test //È«º¸ÇÏ´Â Å©·çÁ¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void È«º¸Å©·çÁ¤º¸Á¶È¸Å×½ºÆ®1() {
+	@Test //í™ë³´í•˜ëŠ” í¬ë£¨ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í™ë³´í¬ë£¨ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		List<PromotionVO> result = dao.getAllPromotionCrew();
 		assertNotEquals(7, result.size());
 	}
 
-	@Test //È«º¸ÇÏ´Â Å©·çÁ¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void È«º¸Å©·çÁ¤º¸Á¶È¸Å×½ºÆ®2() {
+	@Test //í™ë³´í•˜ëŠ” í¬ë£¨ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í™ë³´í¬ë£¨ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		List<PromotionVO> result = dao.getAllPromotionCrew();
 		assertEquals(6, result.size());
 	}
 
-	@Test //¸ğµç Å©·çÁ¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void ¸ğµçÅ©·çÁ¤º¸Á¶È¸Å×½ºÆ®1() {
+	@Test //ëª¨ë“  í¬ë£¨ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void ëª¨ë“ í¬ë£¨ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		List<AllCrewVO> result = dao.getAllCrew();
 		assertNotEquals(9, result.size());
 	}
 
-	@Test //¸ğµç Å©·çÁ¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void ¸ğµçÅ©·çÁ¤º¸Á¶È¸Å×½ºÆ®2() {
+	@Test //ëª¨ë“  í¬ë£¨ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void ëª¨ë“ í¬ë£¨ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		List<AllCrewVO> result = dao.getAllCrew();
 		assertNotEquals(10, result.size());
 	}
 
-	@Test //ÇÊÅÍ Àû¿ëµÈ ¸ğµç Å©·çÁ¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void ÇÊÅÍÀû¿ëµÈ¸ğµçÅ©·çÁ¤º¸Á¶È¸Å×½ºÆ®1() {
+	@Test //í•„í„° ì ìš©ëœ ëª¨ë“  í¬ë£¨ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í•„í„°ì ìš©ëœëª¨ë“ í¬ë£¨ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		Map<String, String> filter = new HashMap<>();
 		filter.put("interestCategory", null);
-		filter.put("guName", "¸¶Æ÷±¸");
+		filter.put("guName", "ë§ˆí¬êµ¬");
 		filter.put("ageRange", null);
 		List<AllCrewVO> result = dao.getAllCrewByFilter(filter);
 		boolean found = result.stream()
-				.anyMatch(crew -> "¿ë»ê±¸".equals(crew.getGuName()));
+				.anyMatch(crew -> "ìš©ì‚°êµ¬".equals(crew.getGuName()));
 		assertFalse(found);
 	}
 
-	@Test //ÇÊÅÍ Àû¿ëµÈ ¸ğµç Å©·çÁ¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void ÇÊÅÍÀû¿ëµÈ¸ğµçÅ©·çÁ¤º¸Á¶È¸Å×½ºÆ®2() {
+	@Test //í•„í„° ì ìš©ëœ ëª¨ë“  í¬ë£¨ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í•„í„°ì ìš©ëœëª¨ë“ í¬ë£¨ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		Map<String, String> filter = new HashMap<>();
-		filter.put("interestCategory", "¿îµ¿");
-		filter.put("guName", "¼ÛÆÄ±¸");
+		filter.put("interestCategory", "ìš´ë™");
+		filter.put("guName", "ì†¡íŒŒêµ¬");
 		List<AllCrewVO> result = dao.getAllCrewByFilter(filter);
 		boolean found = result.stream()
-				.anyMatch(crew -> "½½·¥µ¢Å©".equals(crew.getCrewName()));
+				.anyMatch(crew -> "ìŠ¬ë¨ë©í¬".equals(crew.getCrewName()));
 		assertTrue(found);
 	}
 
-	@Test //Å©·ç »ó¼¼Á¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·ç»ó¼¼Á¤º¸Á¶È¸Å×½ºÆ®1() {
+	@Test //í¬ë£¨ ìƒì„¸ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ìƒì„¸ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		AllCrewVO result = dao.getCrewDetail(7);
-		assertNotEquals("½½·¥µ¢Å©", result.getCrewName());
+		assertNotEquals("ìŠ¬ë¨ë©í¬", result.getCrewName());
 	}
 
-	@Test //Å©·ç »ó¼¼Á¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·ç»ó¼¼Á¤º¸Á¶È¸Å×½ºÆ®2() {
+	@Test //í¬ë£¨ ìƒì„¸ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ìƒì„¸ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		AllCrewVO result = dao.getCrewDetail(7);
-		assertEquals("ºÏÀûºÏÀû", result.getCrewName());
+		assertEquals("ë¶ì ë¶ì ", result.getCrewName());
 	}
 
-	@Test //Å©·çÀå Á¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·çÀåÁ¤º¸Á¶È¸Å×½ºÆ®1() {
+	@Test //í¬ë£¨ì¥ ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ì¥ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		CrewLeaderVO result = dao.getCrewLeader(7);
-		assertNotEquals("ÀÌ»óÇõ", result.getName());
+		assertNotEquals("ì´ìƒí˜", result.getName());
 	}
 
-	@Test //Å©·çÀå Á¤º¸ Á¶È¸(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·çÀåÁ¤º¸Á¶È¸Å×½ºÆ®2() {
+	@Test //í¬ë£¨ì¥ ì •ë³´ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ì¥ì •ë³´ì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		CrewLeaderVO result = dao.getCrewLeader(7);
-		assertEquals("ÀÌ¿ìÁø", result.getName());
+		assertEquals("ì´ìš°ì§„", result.getName());
 	}
 
-	@Test //Å©·ç »ı¼ºÇÏ±â(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·ç»ı¼ºÅ×½ºÆ®1() {
+	@Test //í¬ë£¨ ìƒì„±í•˜ê¸°(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ìƒì„±í…ŒìŠ¤íŠ¸1() {
 		int result = 0;
-		result = dao.addCrew(new CrewVO("ºÏÀûºÏÀû", "kyeongmin56", "ÇÔ²² ¸ğ¿© ºÏÀûºÏÀû È°µ¿ÇØ¿ä!", "¿îµ¿", "20´ë-30´ë", "crew1.jpg", "Áö±İ ¹Ù·Î Âü¿©ÇÏ¼¼¿ä!", 'Y', 1111000000));
+		result = dao.addCrew(new CrewVO("ë¶ì ë¶ì ", "kyeongmin56", "í•¨ê»˜ ëª¨ì—¬ ë¶ì ë¶ì  í™œë™í•´ìš”!", "ìš´ë™", "20ëŒ€-30ëŒ€", "crew1.jpg", "ì§€ê¸ˆ ë°”ë¡œ ì°¸ì—¬í•˜ì„¸ìš”!", 'Y', 1111000000));
 		assertNotEquals(result, 1);
 	}
 
-	@Test //Å©·ç »ı¼ºÇÏ±â(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·ç»ı¼ºÅ×½ºÆ®2() {
+	@Test //í¬ë£¨ ìƒì„±í•˜ê¸°(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ìƒì„±í…ŒìŠ¤íŠ¸2() {
 		int result = 0;
-		result = dao.addCrew(new CrewVO("ºÏÀûºÏÀÛ", "kyeongmin56", "ÇÔ²² ¸ğ¿© ºÏÀûºÏÀû È°µ¿ÇØ¿ä!", "¿îµ¿", "20´ë-30´ë", "crew11jpg", "Áö±İ ¹Ù·Î Âü¿©ÇÏ¼¼¿ä!", 'Y', 1111000000));
+		result = dao.addCrew(new CrewVO("ë¶ì ë¶ì‘", "kyeongmin56", "í•¨ê»˜ ëª¨ì—¬ ë¶ì ë¶ì  í™œë™í•´ìš”!", "ìš´ë™", "20ëŒ€-30ëŒ€", "crew11jpg", "ì§€ê¸ˆ ë°”ë¡œ ì°¸ì—¬í•˜ì„¸ìš”!", 'Y', 1111000000));
 		assertEquals(result, 1);
 	}
 
-	@Test //Å©·ç ¼öÁ¤ÇÏ±â(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·ç¼öÁ¤Å×½ºÆ®1() {
+	@Test //í¬ë£¨ ìˆ˜ì •í•˜ê¸°(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ìˆ˜ì •í…ŒìŠ¤íŠ¸1() {
 		int result = 0;
-		result = dao.updateCrew(new CrewVO(11, "ºÏÀûºÏÀû", "kyeongmin56", "ÇÔ²² ¸ğ¿© ºÏÀûºÏÀû È°µ¿ÇØ¿ä!", "¿îµ¿", "20´ë-30´ë", "crew1.jpg", "Áö±İ ¹Ù·Î Âü¿©ÇÏ¼¼¿ä!", 'Y', 1111000000));
+		result = dao.updateCrew(new CrewVO(11, "ë¶ì ë¶ì ", "kyeongmin56", "í•¨ê»˜ ëª¨ì—¬ ë¶ì ë¶ì  í™œë™í•´ìš”!", "ìš´ë™", "20ëŒ€-30ëŒ€", "crew1.jpg", "ì§€ê¸ˆ ë°”ë¡œ ì°¸ì—¬í•˜ì„¸ìš”!", 'Y', 1111000000));
 		assertNotEquals(result, 0);
 	}
 
-	@Test //Å©·ç ¼öÁ¤ÇÏ±â(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·ç¼öÁ¤Å×½ºÆ®2() {
+	@Test //í¬ë£¨ ìˆ˜ì •í•˜ê¸°(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ìˆ˜ì •í…ŒìŠ¤íŠ¸2() {
 		int result = 0;
-		result = dao.updateCrew(new CrewVO(7, "ºÏÀûºÏÀû", "kyeongmin56", "ÇÔ²² ¸ğ¿© ºÏÀûºÏÀû È°µ¿ÇØ¿ä!", "¿îµ¿", "20´ë-30´ë", "crew1.jpg", "Áö±İ ¹Ù·Î Âü¿©ÇÏ¼¼¿ä!", 'Y', 1111000000));
+		result = dao.updateCrew(new CrewVO(7, "ë¶ì ë¶ì ", "kyeongmin56", "í•¨ê»˜ ëª¨ì—¬ ë¶ì ë¶ì  í™œë™í•´ìš”!", "ìš´ë™", "20ëŒ€-30ëŒ€", "crew1.jpg", "ì§€ê¸ˆ ë°”ë¡œ ì°¸ì—¬í•˜ì„¸ìš”!", 'Y', 1111000000));
 		assertEquals(result, 1);
 	}
 
-	@Test //Å©·ç ÀüÃ¼ ´ñ±Û °³¼ö Á¶È¸(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·ç´ñ±Û°³¼öÁ¶È¸Å×½ºÆ®1() {
+	@Test //í¬ë£¨ ì „ì²´ ëŒ“ê¸€ ê°œìˆ˜ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ëŒ“ê¸€ê°œìˆ˜ì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		int result = 0;
 		result = dao.getCommentCount(5);
 		assertNotEquals(result, 1);
 	}
 
-	@Test //Å©·ç ÀüÃ¼ ´ñ±Û °³¼ö Á¶È¸(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·ç´ñ±Û°³¼öÁ¶È¸Å×½ºÆ®2() {
+	@Test //í¬ë£¨ ì „ì²´ ëŒ“ê¸€ ê°œìˆ˜ ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ëŒ“ê¸€ê°œìˆ˜ì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		int result = 0;
 		result = dao.getCommentCount(5);
 		assertEquals(result, 2);
 	}
 
-	@Test //Å©·ç ´ñ±Û ÀÛ¼ºÀÚÁ¤º¸ ¹× ´ñ±Û ³»¿ë Á¶È¸(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·ç´ñ±Û³»¿ëÁ¶È¸Å×½ºÆ®1() {
+	@Test //í¬ë£¨ ëŒ“ê¸€ ì‘ì„±ìì •ë³´ ë° ëŒ“ê¸€ ë‚´ìš© ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ëŒ“ê¸€ë‚´ìš©ì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		List<CrewCommentVO> result = new ArrayList<>();
 		result = dao.getCrewCommentDetail(9);
 		boolean found = result.stream()
@@ -294,8 +294,8 @@ public class CrewDAOTest {
 		assertTrue(found);
 	}
 
-	@Test //Å©·ç ´ñ±Û ÀÛ¼ºÀÚÁ¤º¸ ¹× ´ñ±Û ³»¿ë Á¶È¸(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·ç´ñ±Û³»¿ëÁ¶È¸Å×½ºÆ®2() {
+	@Test //í¬ë£¨ ëŒ“ê¸€ ì‘ì„±ìì •ë³´ ë° ëŒ“ê¸€ ë‚´ìš© ì¡°íšŒ(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ëŒ“ê¸€ë‚´ìš©ì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		List<CrewCommentVO> result = new ArrayList<>();
 		result = dao.getCrewCommentDetail(9);
 		boolean found = result.stream()
@@ -303,22 +303,22 @@ public class CrewDAOTest {
 		assertTrue(found);
 	}
 
-	@Test //Å©·ç °¡ÀÔ ½ÅÃ»(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·ç°¡ÀÔ½ÅÃ»Å×½ºÆ®1() {
+	@Test //í¬ë£¨ ê°€ì… ì‹ ì²­(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ê°€ì…ì‹ ì²­í…ŒìŠ¤íŠ¸1() {
 		int result = 0;
-		result = dao.applyToCrew(new CrewApplicationVO(8, "cunjabag4556", "¿îµ¿ ÁÁ¾Æ¿ä. ÇÔ²² ÇØ¿ä!"));
+		result = dao.applyToCrew(new CrewApplicationVO(8, "cunjabag4556", "ìš´ë™ ì¢‹ì•„ìš”. í•¨ê»˜ í•´ìš”!"));
 		assertNotEquals(result, 1);
 	}
 
-	@Test //Å©·ç °¡ÀÔ ½ÅÃ»(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·ç°¡ÀÔ½ÅÃ»Å×½ºÆ®2() {
+	@Test //í¬ë£¨ ê°€ì… ì‹ ì²­(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ê°€ì…ì‹ ì²­í…ŒìŠ¤íŠ¸2() {
 		int result = 0;
-		result = dao.applyToCrew(new CrewApplicationVO(8, "cunjabag45", "¿îµ¿ ÁÁ¾Æ¿ä. ÇÔ²² ÇØ¿ä!"));
+		result = dao.applyToCrew(new CrewApplicationVO(8, "cunjabag45", "ìš´ë™ ì¢‹ì•„ìš”. í•¨ê»˜ í•´ìš”!"));
 		assertEquals(result, 1);
 	}
 
-	@Test //Å©·ç °ü¸®ÆäÀÌÁö Á¶È¸(Å©·ç°¡ÀÔ½ÅÃ»ÀÚ)(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·ç°ü¸®ÆäÀÌÁöÀÇÅ©·ç°¡ÀÔ½ÅÃ»ÀÚÁ¶È¸Å×½ºÆ®1() {
+	@Test //í¬ë£¨ ê´€ë¦¬í˜ì´ì§€ ì¡°íšŒ(í¬ë£¨ê°€ì…ì‹ ì²­ì)(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ê´€ë¦¬í˜ì´ì§€ì˜í¬ë£¨ê°€ì…ì‹ ì²­ìì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		List<CrewManagePageVO> result = new ArrayList<>();
 		result = dao.getCrewApplicants(1);
 		boolean found = result.stream()
@@ -326,8 +326,8 @@ public class CrewDAOTest {
 		assertFalse(found);
 	}
 
-	@Test //Å©·ç °ü¸®ÆäÀÌÁö Á¶È¸(Å©·ç°¡ÀÔ½ÅÃ»ÀÚ)(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·ç°ü¸®ÆäÀÌÁöÀÇÅ©·ç°¡ÀÔ½ÅÃ»ÀÚÁ¶È¸Å×½ºÆ®2() {
+	@Test //í¬ë£¨ ê´€ë¦¬í˜ì´ì§€ ì¡°íšŒ(í¬ë£¨ê°€ì…ì‹ ì²­ì)(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ê´€ë¦¬í˜ì´ì§€ì˜í¬ë£¨ê°€ì…ì‹ ì²­ìì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		List<CrewManagePageVO> result = new ArrayList<>();
 		result = dao.getCrewApplicants(1);
 		boolean found = result.stream()
@@ -335,8 +335,8 @@ public class CrewDAOTest {
 		assertTrue(found);
 	}
 
-	@Test //Å©·ç °ü¸®ÆäÀÌÁö Á¶È¸(Å©·ç¿ø)(±â´ñ°ªÀÌ ¿ÇÁö ¾ÊÀº °æ¿ì)
-	public void Å©·ç°ü¸®ÆäÀÌÁöÀÇÅ©·ç¿øÁ¶È¸Å×½ºÆ®1() {
+	@Test //í¬ë£¨ ê´€ë¦¬í˜ì´ì§€ ì¡°íšŒ(í¬ë£¨ì›)(ê¸°ëŒ“ê°’ì´ ì˜³ì§€ ì•Šì€ ê²½ìš°)
+	public void í¬ë£¨ê´€ë¦¬í˜ì´ì§€ì˜í¬ë£¨ì›ì¡°íšŒí…ŒìŠ¤íŠ¸1() {
 		List<CrewManagePageVO> result = new ArrayList<>();
 		result = dao.getCrewMember(2);
 		boolean found = result.stream()
@@ -344,8 +344,8 @@ public class CrewDAOTest {
 		assertFalse(found);
 	}
 
-	@Test //Å©·ç °ü¸®ÆäÀÌÁö Á¶È¸(Å©·ç¿ø)(±â´ñ°ªÀÌ ¿ÇÀº °æ¿ì)
-	public void Å©·ç°ü¸®ÆäÀÌÁöÀÇÅ©·ç¿øÁ¶È¸Å×½ºÆ®2() {
+	@Test //í¬ë£¨ ê´€ë¦¬í˜ì´ì§€ ì¡°íšŒ(í¬ë£¨ì›)(ê¸°ëŒ“ê°’ì´ ì˜³ì€ ê²½ìš°)
+	public void í¬ë£¨ê´€ë¦¬í˜ì´ì§€ì˜í¬ë£¨ì›ì¡°íšŒí…ŒìŠ¤íŠ¸2() {
 		List<CrewManagePageVO> result = new ArrayList<>();
 		result = dao.getCrewMember(2);
 		boolean found = result.stream()
