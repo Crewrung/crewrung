@@ -110,7 +110,7 @@ public class CrewDAO {
 		con.close();
 		return result;
 	}
-	//¿©±â±îÁö Á¤´ÉÇõ ÀÛ¼º
+	//ì—¬ê¸°ê¹Œì§€ ì •ëŠ¥í˜ ì‘ì„±
 	
 	public boolean setCrewMeeting(CrewMeetingVO cm) {
 		boolean result = false;
@@ -179,5 +179,5 @@ public class CrewDAO {
 		con.close();
 		return result;
 	}
-	//¿©±â±îÁö ÀÌ»óÇõ ÀÛ¼º
+	//ì—¬ê¸°ê¹Œì§€ ì´ìƒí˜ ì‘ì„±
 }
