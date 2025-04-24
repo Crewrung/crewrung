@@ -37,7 +37,7 @@ public class BoardDAOTest {
         }
     }
 
-    // 1) ´ñ±Û »ğÀÔ ¼º°ø
+    // 1) ëŒ“ê¸€ ì‚½ì… ì„±ê³µ
     @Test
     public void testInsertCommentSuccess() {
         BoardCommentVO comment = new BoardCommentVO(30, "seulbin59", "Test Comment");
@@ -45,7 +45,7 @@ public class BoardDAOTest {
         assertEquals(1, result);
     }
 
-    // 2) ´ñ±Û »ğÀÔ ½ÇÆĞ (Á¸ÀçÇÏÁö ¾Ê´Â »ç¿ëÀÚ µî)
+    // 2) ëŒ“ê¸€ ì‚½ì… ì‹¤íŒ¨ (ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì‚¬ìš©ì ë“±)
     @Test
     public void testInsertCommentFailure() {
         BoardCommentVO comment = new BoardCommentVO(30, "invalidUser", "Should Fail");
@@ -53,18 +53,18 @@ public class BoardDAOTest {
             dao.insertComment(comment);
             fail("Expected an exception on invalid commenter");
         } catch (Exception e) {
-            // ¿¹¿Ü ¹ß»ı ±â´ë
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½
         }
     }
 
-    // 3) ´ñ±Û ¸ñ·Ï Á¶È¸
+    // 3) ëŒ“ê¸€ ëª©ë¡ ì¡°íšŒ
     @Test
     public void testGetAllComments() {
         List<BoardCommentListVO> comments = dao.getAllComments();
         assertNotNull(comments);
     }
 
-    // 4) ´ñ±Û »èÁ¦
+    // 4) ëŒ“ê¸€ ì‚­ì œ
     @Test
     public void testDeleteComment() {
         BoardCommentVO vo = new BoardCommentVO(1L, "seulbin59");
@@ -72,7 +72,7 @@ public class BoardDAOTest {
         assertEquals(1, result);
     }
 
-    // 5) °Ô½Ã±Û »ğÀÔ
+    // 5) ê²Œì‹œê¸€ ì‚½ì…
     @Test
     public void testInsertBoard() {
         BoardDetailVO vo = new BoardDetailVO(
@@ -86,7 +86,7 @@ public class BoardDAOTest {
         assertEquals(1, result);
     }
 
-    // 6) °Ô½Ã±Û »èÁ¦
+    // 6) ê²Œì‹œê¸€ ì‚­ì œ
     @Test
     public void testDeleteBoard() {
         BoardVO vo = new BoardVO(40L, "gimsubin94", "dsgfsaergedf");
@@ -94,21 +94,21 @@ public class BoardDAOTest {
         assertEquals(1, result);
     }
 
-    // 7) °Ô½Ã±Û »ó¼¼ Á¶È¸
+    // 7) ê²Œì‹œê¸€ ìƒì„¸ ì¡°íšŒ
     @Test
     public void testGetBoardDetail() {
         BoardDetailVO detail = dao.getBoardDetail(1L);
         assertNotNull(detail);
     }
 
-    // 8) ÀüÃ¼ °Ô½Ã±Û Á¶È¸
+    // 8) ì „ì²´ ê²Œì‹œê¸€ ì¡°íšŒ
     @Test
     public void testGetAllBoards() {
         List<BoardVO> boards = dao.getAllBoards();
         assertNotNull(boards);
     }
 
-    // 10) °Ô½Ã±Û ¼öÁ¤
+    // 10) ê²Œì‹œê¸€ ìˆ˜ì •
     @Test
     public void testUpdateBoard() {
         BoardVO vo = new BoardVO(1L, "joosung88", "Updated Title", "Updated Content");
